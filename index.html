@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>MARSHAL X GAMING</title>
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #080808;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            width: 100%;
+            min-height: 72px;
+
+            background: #111111;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom: 1px solid #252525;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .logo {
+            color: #ff0000;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+
+        .nav-right a {
+            color: white;
+            font-size: 15px;
+            transition: 0.25s;
+            white-space: nowrap;
+        }
+
+
+        .nav-right a:hover {
+            color: red;
+        }
+
+
+        #userArea {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            white-space: nowrap;
+        }
+
+
+        .username {
+            color: #dddddd;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 0, 0, 0.12),
+                    transparent 55%
+                ),
+                #080808;
+        }
+
+
+        .hero-content {
+            max-width: 900px;
+            width: 100%;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+
+        .hero h1 span {
+            color: red;
+        }
+
+
+        .hero p {
+            margin-top: 22px;
+
+            font-size: 19px;
+            color: #bdbdbd;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .youtube-button {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            padding: 15px 30px;
+
+            background: red;
+            color: white;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+            font-size: 16px;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 8px 25px rgba(255, 0, 0, 0.2);
+        }
+
+
+        .youtube-button:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           VIDEOS SECTION
+        ========================= */
+
+        .videos-section {
+            width: 86%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 75px 0;
+        }
+
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+        }
+
+
+        .section-title h2 {
+            font-size: 34px;
+        }
+
+
+        .section-title h2 span {
+            color: red;
+        }
+
+
+        .view-all {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+
+        .view-all:hover {
+            color: red;
+        }
+
+
+        /* =========================
+           VIDEO GRID
+        ========================= */
+
+        .video-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .video-card {
+            background: #121212;
+
+            border: 1px solid #202020;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+
+            min-width: 0;
+        }
+
+
+        .video-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #333;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .thumbnail {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            object-fit: cover;
+
+            display: block;
+
+            background: #1a1a1a;
+        }
+
+
+        .video-info {
+            padding: 18px;
+        }
+
+
+        .video-info h3 {
+            font-size: 18px;
+            line-height: 1.4;
+
+            color: white;
+
+            margin-bottom: 8px;
+        }
+
+
+        .video-info p {
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        .about {
+            width: 86%;
+            max-width: 1000px;
+
+            margin: 0 auto;
+
+            padding: 30px 0 80px;
+
+            text-align: center;
+        }
+
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+
+        .about h2 span {
+            color: red;
+        }
+
+
+        .about p {
+            color: #999;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111111;
+
+            border-top: 1px solid #222;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        footer strong {
+            color: red;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 4%;
+            }
+
+
+            .logo {
+                font-size: 20px;
+            }
+
+
+            .nav-right {
+                gap: 15px;
+            }
+
+
+            .nav-right a {
+                font-size: 13px;
+            }
+
+
+            .video-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+                min-height: 65px;
+            }
+
+
+            .logo {
+                font-size: 17px;
+            }
+
+
+            .nav-right {
+                gap: 10px;
+            }
+
+
+            .username {
+                display: none;
+            }
+
+
+            .hero {
+                min-height: 430px;
+                padding: 60px 20px;
+            }
+
+
+            .hero p {
+                font-size: 16px;
+            }
+
+
+            .videos-section {
+                width: 90%;
+                padding: 55px 0;
+            }
+
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+
+
+            .about {
+                width: 90%;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .nav-right a:nth-child(1) {
+                display: none;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            MARSHAL X GAMING
+        </a>
+
+
+        <div class="nav-right">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="videos.html">
+                Videos
+            </a>
+
+            <span id="userArea"></span>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                MARSHAL
+                <span>X</span>
+                GAMING
+            </h1>
+
+
+            <p>
+                Gaming • Entertainment • Live Streams
+            </p>
+
+
+            <a
+                class="youtube-button"
+                href="https://www.youtube.com/@MARSHALXGAMING"
+                target="_blank"
+            >
+                VISIT YOUTUBE
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LATEST VIDEOS
+    ========================= -->
+
+    <section class="videos-section">
+
+        <div class="section-title">
+
+            <h2>
+                Latest Videos <span>🎮</span>
+            </h2>
+
+
+            <a
+                href="videos.html"
+                class="view-all"
+            >
+                View All →
+            </a>
+
+        </div>
+
+
+
+        <div class="video-grid">
+
+
+            <!-- VIDEO 1 -->
+
+            <div class="video-card">
+
+                <a
+                    href="https://youtu.be/SyWAlv80W2o"
+                    target="_blank"
+                >
+
+                    <img
+                        class="thumbnail"
+                        src="https://img.youtube.com/vi/SyWAlv80W2o/maxresdefault.jpg"
+                        alt="Latest MARSHAL X GAMING video"
+                    >
+
+
+                    <div class="video-info">
+
+                        <h3>
+                            Latest Gaming Video
+                        </h3>
+
+                        <p>
+                            MARSHAL X GAMING
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- VIDEO 2 -->
+
+            <div class="video-card">
+
+                <a
+                    href="https://www.youtube.com/live/biUm3haWGcw"
+                    target="_blank"
+                >
+
+                    <img
+                        class="thumbnail"
+                        src="https://img.youtube.com/vi/biUm3haWGcw/maxresdefault.jpg"
+                        alt="Valorant Live Stream"
+                    >
+
+
+                    <div class="video-info">
+
+                        <h3>
+                            VALORANT LIVE STREAM
+                        </h3>
+
+                        <p>
+                            MARSHAL X GAMING
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- VIDEO 3 -->
+
+            <div class="video-card">
+
+                <a
+                    href="https://youtu.be/-Z-juXWdf6Y"
+                    target="_blank"
+                >
+
+                    <img
+                        class="thumbnail"
+                        src="https://img.youtube.com/vi/-Z-juXWdf6Y/maxresdefault.jpg"
+                        alt="GTA 5 First Mission"
+                    >
+
+
+                    <div class="video-info">
+
+                        <h3>
+                            GTA 5 - First Mission
+                        </h3>
+
+                        <p>
+                            MARSHAL X GAMING
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="about">
+
+        <h2>
+            Welcome to
+            <span>MARSHAL X GAMING</span>
+        </h2>
+
+
+        <p>
+            Gaming videos, live streams and entertainment
+            from MARSHAL X GAMING. Follow the channel and
+            stay connected for the latest gaming content.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026
+        <strong>MARSHAL X GAMING</strong>.
+        All Rights Reserved.
+
+    </footer>
+
+
+
+    <!-- =========================
+         LOGIN / LOGOUT SCRIPT
+    ========================= -->
+
+    <script>
+
+        const userArea =
+            document.getElementById("userArea");
+
+
+        const loggedIn =
+            localStorage.getItem("loggedIn");
+
+
+        const username =
+            localStorage.getItem("username");
+
+
+        if (
+            loggedIn === "true" &&
+            username
+        ) {
+
+            userArea.innerHTML = `
+
+                <span class="username">
+                    👤 ${username}
+                </span>
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                >
+                    Logout
+                </a>
+
+            `;
+
+        } else {
+
+            userArea.innerHTML = `
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            `;
+
+        }
+
+
+        function logout() {
+
+            localStorage.removeItem("loggedIn");
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
