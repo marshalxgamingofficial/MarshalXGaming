@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - MARSHAL X GAMING</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #080808;
+            color: white;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 380px;
+            background: #111;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #292929;
+            box-shadow: 0 0 35px rgba(255, 0, 0, 0.2);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: red;
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        .logo p {
+            color: #888;
+            margin-top: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+
+            background: #1b1b1b;
+            color: white;
+
+            border: 1px solid #444;
+            border-radius: 7px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: red;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+
+            background: red;
+            color: white;
+
+            border: none;
+            border-radius: 7px;
+
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #cc0000;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .back a:hover {
+            color: white;
+        }
+    .signup {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+}
+
+.signup a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup a:hover {
+    color: red;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">
+            <h1>MARSHAL X</h1>
+            <p>GAMING LOGIN</p>
+        </div>
+
+        <form id="loginForm">
+
+            <label for="username">Username</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button type="submit">
+                LOGIN
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <div class="signup">
+            Don't have accound?
+            <a href="index.html">← Back to Home</a>
+        </div>
+
+    </div>
+
+
+    <script>
+
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const savedUsername = localStorage.getItem("username");
+        const savedPassword = localStorage.getItem("password");
+
+        const message = document.getElementById("message");
+
+        if (username === savedUsername && password === savedPassword) {
+
+            message.textContent = "Login successful! 🎮";
+            message.style.color = "lime";
+
+            localStorage.setItem("loggedIn", "true");
+
+            setTimeout(function() {
+                window.location.href = "index.html";
+            }, 1000);
+
+        } else {
+
+            message.textContent = "Invalid username or password!";
+            message.style.color = "red";
+
+        }
+
+    });
+
+</script>
+
+        
+    </script>
+
+</body>
+
+</html>
