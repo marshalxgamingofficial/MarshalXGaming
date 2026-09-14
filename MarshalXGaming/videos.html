@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Videos - MARSHAL X GAMING</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    height: 70px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+}
+
+nav a:hover {
+    color: red;
+}
+
+.container {
+    width: 86%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.search input {
+    flex: 1;
+    padding: 15px;
+    background: #151515;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.search button {
+    padding: 15px 25px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.video {
+    background: #141414;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.video:hover {
+    transform: translateY(-5px);
+}
+
+.video img {
+    width: 100%;
+    display: block;
+}
+
+.video-info {
+    padding: 18px;
+}
+
+.video-info h3 {
+    margin-bottom: 8px;
+}
+
+.video-info p {
+    color: #888;
+}
+
+.video a {
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    margin-top: 80px;
+    padding: 25px;
+    text-align: center;
+    background: #111;
+    color: #777;
+}
+
+@media(max-width: 800px) {
+
+    .videos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 550px) {
+
+    .videos {
+        grid-template-columns: 1fr;
+    }
+
+    .search {
+        flex-direction: column;
+    }
+
+    nav {
+        padding: 0 4%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+MARSHAL X GAMING
+</div>
+
+<div>
+<a href="index.html">Home</a>
+<a href="videos.html">Videos</a>
+<a href="login.html">Login</a>
+</div>
+
+</nav>
+
+
+<div class="container">
+
+<h1>My Videos 🎮</h1>
+
+
+<div class="search">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search videos..."
+>
+
+<button onclick="searchVideos()">
+SEARCH
+</button>
+
+</div>
+
+
+<div class="videos" id="videoContainer">
+
+
+<!-- VIDEO 1 -->
+<div class="video">
+
+    <a href="https://youtu.be/SyWAlv80W2o" target="_blank">
+
+        <img
+            src="https://img.youtube.com/vi/SyWAlv80W2o/maxresdefault.jpg"
+            alt="Latest Video">
+
+        <div class="video-info">
+            <h3>Latest Video</h3>
+            <p>MARSHAL X GAMING</p>
+        </div>
+
+    </a>
+
+</div>
+
+
+<!-- VIDEO 2 -->
+<div class="video">
+
+    <a href="https://www.youtube.com/live/biUm3haWGcw" target="_blank">
+
+        <img
+            src="https://img.youtube.com/vi/biUm3haWGcw/maxresdefault.jpg"
+            alt="Valorant Live Stream">
+
+        <div class="video-info">
+            <h3>VALORANT LIVE STREAM</h3>
+            <p>MARSHAL X GAMING</p>
+        </div>
+
+    </a>
+
+</div>
+
+
+<!-- VIDEO 3 -->
+<div class="video">
+
+    <a href="https://youtu.be/-Z-juXWdf6Y" target="_blank">
+
+        <img
+            src="https://img.youtube.com/vi/-Z-juXWdf6Y/maxresdefault.jpg"
+            alt="GTA 5 First Mission">
+
+        <div class="video-info">
+            <h3>GTA 5 - First Mission</h3>
+            <p>MARSHAL X GAMING</p>
+        </div>
+
+    </a>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 MARSHAL X GAMING. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+function searchVideos() {
+
+    const input =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+    const videos =
+    document.querySelectorAll(".video");
+
+    videos.forEach(function(video) {
+
+        const title =
+        video.querySelector("h3")
+        .textContent
+        .toLowerCase();
+
+        if (title.includes(input)) {
+
+            video.style.display = "block";
+
+        } else {
+
+            video.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
